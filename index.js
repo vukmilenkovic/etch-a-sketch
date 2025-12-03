@@ -19,17 +19,38 @@ for (let i = 0; i < 16; i++){
     container.appendChild(grid);
 }
 
-container.addEventListener("mouseover", (e) => {
-  if (e.target.classList.contains("square")) {
-    e.target.style.backgroundColor = 'red';
-  }
+// container.addEventListener("mouseover", (e) => {
+//   if (e.target.classList.contains("square")) {
+//     e.target.style.backgroundColor = 'red';
+//   }
 
-});
+// });
 
 
-container.addEventListener('mouseout', (e) => {
-    if(e.target.classList.contains('square')){
-        e.target.style.backgroundColor = '';
-    }
+// container.addEventListener('mouseout', (e) => {
+//     if(e.target.classList.contains('square')){
+//         e.target.style.backgroundColor = '';
+//     }
+// })
+
+
+container.addEventListener('mousemove', (e) => {
+    // Create a new div that will act as a trailer to the mouse
+    let pixel = document.createElement('div');
+    const rect = container.getBoundingClientRect();
+
+    pixel.style.position = 'absolute';
+    pixel.style.left = `${e.clientX}px`;
+    pixel.style.top = `${e.clientY}px`;
+    pixel.style.width = '2px';
+    pixel.style.height = '2px';
+    pixel.style.background = 'black';
+    pixel.style.pointerEvents = 'none';
+
+    container.appendChild(pixel);
+
+    setTimeout(() => pixel.remove(), 200);
+
+
 })
 
