@@ -9,13 +9,30 @@ container.style.maxWidth = '960px';
 // TODO: Make into a function that creates squares n times
 // function createSquare(n); - replace the number of loops with the n arg
 // Create 16 divs contained in the container div 
+
+function drawGrid(n){
+  const squareSize = 100 / n;
+
+  for (let i = 0; i < n * n; i++){
+    const grid = document.createElement("div");
+    grid.className = 'square';
+
+    // Style the squares
+    grid.style.display = 'flex';
+    grid.style.flex = `0 0 ${squareSize}%`;
+    grid.style.height = `${squareSize}vh`;
+    grid.style.outline = '1px solid black';
+
+    container.appendChild(grid);
+}
+};
 for (let i = 0; i < 16; i++){
     const grid = document.createElement("div");
     grid.className = 'square';
 
     // Style the squares
     grid.style.display = 'flex';
-    grid.style.flex = '0 0 25%';
+    grid.style.flex = '1 1 25%';
     grid.style.height = '150px';
     grid.style.outline = '1px solid black'
 
@@ -66,6 +83,18 @@ button.style.left = '50%';
 button.style.height = '50px';
 button.style.width = '150px';
 button.style.margin = ''
+
+
+// Button click
+button.addEventListener('click', (e) => {
+  // Get user input from the alert and pass it to the drawGrid() function
+  let userValue = window.prompt("Set the grid layout, it's equal sqaures, maximum 100", '64x64');
+
+  container.innerHTML = '';
+  drawGrid(userValue);
+
+})
+
 
 document.body.appendChild(button);
 
