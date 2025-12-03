@@ -1,6 +1,9 @@
 const container = document.querySelector(".container");
 container.style.display = 'flex';
 container.style.flexWrap = 'wrap';
+container.style.paddingTop = '100px';
+container.style.maxWidth = '960px';
+
 
 
 // TODO: Make into a function that creates squares n times
@@ -19,19 +22,19 @@ for (let i = 0; i < 16; i++){
     container.appendChild(grid);
 }
 
-// container.addEventListener("mouseover", (e) => {
-//   if (e.target.classList.contains("square")) {
-//     e.target.style.backgroundColor = 'red';
-//   }
+container.addEventListener("mouseover", (e) => {
+  if (e.target.classList.contains("square")) {
+    e.target.style.backgroundColor = ' #96D548';
+  }
 
-// });
+});
 
 
-// container.addEventListener('mouseout', (e) => {
-//     if(e.target.classList.contains('square')){
-//         e.target.style.backgroundColor = '';
-//     }
-// })
+container.addEventListener('mouseout', (e) => {
+    if(e.target.classList.contains('square')){
+        e.target.style.backgroundColor = '';
+    }
+})
 
 
 container.addEventListener('mousemove', (e) => {
@@ -44,7 +47,7 @@ container.addEventListener('mousemove', (e) => {
     pixel.style.top = `${e.clientY}px`;
     pixel.style.width = '2px';
     pixel.style.height = '2px';
-    pixel.style.background = 'black';
+    pixel.style.background = 'white';
     pixel.style.pointerEvents = 'none';
 
     container.appendChild(pixel);
@@ -53,4 +56,16 @@ container.addEventListener('mousemove', (e) => {
 
 
 })
+
+const button = document.createElement('button');
+button.className = 'btn';
+button.textContent = 'CLick me';
+button.style.position = 'fixed';
+button.style.top = '0px';
+button.style.left = '50%';
+button.style.height = '50px';
+button.style.width = '150px';
+button.style.margin = ''
+
+document.body.appendChild(button);
 
